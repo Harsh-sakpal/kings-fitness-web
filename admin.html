@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KING'S FITNESS Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kingsRed: '#b91c1c'
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen bg-slate-950 text-slate-50">
+  <div class="min-h-screen flex">
+    <aside class="hidden md:flex md:flex-col w-64 border-r border-slate-800 bg-slate-950/90">
+      <div class="px-5 py-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-lg bg-kingsRed flex items-center justify-center shadow-lg shadow-red-900/40">
+            <span class="font-extrabold text-white text-xl">K</span>
+          </div>
+          <div>
+            <div class="font-extrabold tracking-wide text-white text-sm">
+              KING'S FITNESS
+            </div>
+            <p class="text-[10px] uppercase tracking-[0.24em] text-red-300">
+              Admin Dashboard
+            </p>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 px-3 py-4 text-sm space-y-1" id="sidebar-nav">
+        <button data-section="overview"
+          class="w-full text-left px-3 py-2 rounded-lg text-slate-200 bg-slate-900/70 border border-slate-700/80 text-xs font-medium">
+          Overview
+        </button>
+        <button data-section="media"
+          class="w-full text-left px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-900/60 text-xs font-medium">
+          Media (Videos & Images)
+        </button>
+        <button data-section="billing"
+          class="w-full text-left px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-900/60 text-xs font-medium">
+          Bills & Quotations
+        </button>
+      </nav>
+      <div class="px-4 py-3 border-t border-slate-800 text-[11px] text-slate-400">
+        Logged in as <span id="admin-username" class="font-semibold text-slate-200">admin</span>
+        <button id="logout-btn" class="block mt-1 text-xs text-red-300 hover:text-red-200">Log out</button>
+      </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col">
+      <header class="flex items-center justify-between px-4 md:px-6 py-3 border-b border-slate-800 bg-slate-950/90">
+        <div class="flex items-center gap-3">
+          <button id="back-to-site"
+            class="text-[11px] text-slate-400 hover:text-slate-200 border border-slate-700/80 rounded-md px-2 py-1">
+            ← Back to site
+          </button>
+          <div class="md:hidden text-xs font-semibold text-slate-100">
+            KING'S FITNESS Admin
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400">
+          Secure admin panel – keep login details private.
+        </p>
+      </header>
+
+      <section id="login-section" class="flex-1 flex items-center justify-center px-4 py-8">
+        <div class="max-w-sm w-full rounded-2xl border border-slate-800 bg-slate-900/80 p-6 shadow-xl">
+          <h1 class="text-xl font-bold text-white mb-2">Admin login</h1>
+          <p class="text-xs text-slate-400 mb-4">
+            Only KING'S FITNESS owners/staff should access this panel.
+          </p>
+          <form id="login-form" class="space-y-4 text-sm">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Username</label>
+              <input name="username" required value="admin"
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+              <input type="password" name="password" required placeholder="••••••••"
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none" />
+            </div>
+            <div id="login-status" class="text-[11px] text-red-300 h-4"></div>
+            <button type="submit"
+              class="w-full rounded-lg bg-kingsRed px-3 py-2 text-sm font-semibold text-white hover:bg-red-700 transition">
+              Log in
+            </button>
+          </form>
+          <p class="mt-4 text-[11px] text-slate-400">
+            Default login is set in <span class="font-semibold text-slate-200">.env</span> file
+            (variables <span class="font-mono">ADMIN_USER</span> and <span class="font-mono">ADMIN_PASS</span>).
+            Change it after first setup.
+          </p>
+        </div>
+      </section>
+
+      <section id="dashboard-section" class="flex-1 hidden px-4 md:px-6 py-6 overflow-y-auto">
+        <div id="section-overview" class="dashboard-section space-y-4">
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-2">
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-white">Overview</h2>
+              <p class="text-xs text-slate-400">
+                Quick summary of KING'S FITNESS online presence.
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+              <p class="text-[11px] text-slate-400 mb-1">Contact channels</p>
+              <p class="text-2xl font-bold text-white mb-1">3</p>
+              <p class="text-[11px] text-slate-300">
+                Phone calls, WhatsApp and email all visible on the main site.
+              </p>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+              <p class="text-[11px] text-slate-400 mb-1">Media entries</p>
+              <p class="text-2xl font-bold text-white mb-1" id="overview-media-count">0</p>
+              <p class="text-[11px] text-slate-300">
+                Videos + images currently visible on the website.
+              </p>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+              <p class="text-[11px] text-slate-400 mb-1">Billing generator</p>
+              <p class="text-2xl font-bold text-white mb-1">Ready</p>
+              <p class="text-[11px] text-slate-300">
+                Create professional PDF bills & quotations in the billing tab.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="section-media" class="dashboard-section hidden space-y-4 text-sm">
+          <div class="flex items-end justify-between gap-4 mb-2">
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-white">Media: Videos & Images</h2>
+              <p class="text-xs text-slate-400">
+                Add YouTube video links and image URLs (from Google Drive, Instagram CDN, etc.) to show on the site.
+              </p>
+            </div>
+          </div>
+          <form id="media-form" class="grid md:grid-cols-2 gap-4 items-start">
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">YouTube video URL</label>
+                <input name="videoUrl"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none"
+                  placeholder="https://www.youtube.com/watch?v=..." />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Image URL</label>
+                <input name="imageUrl"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none"
+                  placeholder="https://..." />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Highlight text (optional)</label>
+                <input name="highlight"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none"
+                  placeholder="Example: New gym setup at XYZ Society" />
+              </div>
+              <div id="media-status" class="text-[11px] text-slate-300 h-4"></div>
+              <button type="submit"
+                class="inline-flex items-center gap-2 rounded-lg bg-kingsRed px-3 py-2 text-xs font-semibold text-white hover:bg-red-700 transition">
+                Save media to website
+              </button>
+            </div>
+
+            <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-3 text-xs text-slate-300 space-y-2">
+              <p class="font-semibold text-slate-100 mb-1">Tips</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Use YouTube links that you have uploaded – we will show them as embedded videos.</li>
+                <li>For images, you can use links from Google Photos/Drive (make sure sharing is public) or any
+                  image hosting.</li>
+                <li>You can come back weekly or monthly and update this as your projects grow.</li>
+              </ul>
+            </div>
+          </form>
+
+          <div class="mt-4">
+            <h3 class="text-xs font-semibold text-slate-200 mb-2">Current media snapshot</h3>
+            <pre id="media-preview"
+              class="text-[11px] rounded-lg border border-slate-800 bg-slate-950 p-3 text-slate-300 overflow-auto max-h-48"></pre>
+          </div>
+        </div>
+
+        <div id="section-billing" class="dashboard-section hidden space-y-4 text-sm">
+          <div class="flex items-end justify-between gap-4 mb-2">
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-white">Bills & Quotations</h2>
+              <p class="text-xs text-slate-400">
+                Fill client and item details to generate a neat PDF bill or quotation. You can print, email or share
+                on WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <form id="billing-form" class="space-y-4">
+            <div class="grid md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Document type</label>
+                <select name="type"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none">
+                  <option value="invoice">Tax Invoice</option>
+                  <option value="quotation">Quotation</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Bill / Quotation number</label>
+                <input name="billNumber"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none"
+                  placeholder="Optional – can be auto" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Date</label>
+                <input type="date" name="billDate"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Subject / Work details</label>
+              <input name="subject"
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none"
+                placeholder="Example: Steam bath repairing, full gym AMC, new gym setup etc." />
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Client name *</label>
+                <input name="clientName" required
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Client phone</label>
+                <input name="clientPhone"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Client address</label>
+              <textarea name="clientAddress" rows="2"
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none"></textarea>
+            </div>
+
+            <div class="rounded-xl border border-slate-800 bg-slate-950/80 p-3">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xs font-semibold text-slate-200">Line items</h3>
+                <button type="button" id="add-line-item"
+                  class="inline-flex items-center gap-1 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-[11px] text-slate-200 hover:border-kingsRed">
+                  + Add item
+                </button>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-[11px] text-slate-200">
+                  <thead class="bg-slate-900/80">
+                    <tr>
+                      <th class="text-left px-2 py-1">Description</th>
+                      <th class="text-right px-2 py-1 w-20">Qty</th>
+                      <th class="text-right px-2 py-1 w-24">Rate</th>
+                      <th class="text-right px-2 py-1 w-24">Amount</th>
+                      <th class="px-2 py-1 w-10"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="line-items-body"></tbody>
+                </table>
+              </div>
+              <div class="flex justify-end mt-2 text-[11px] text-slate-200">
+                <div>
+                  <div class="flex justify-between gap-4">
+                    <span>Subtotal:</span>
+                    <span id="subtotal-display">0.00</span>
+                  </div>
+                  <div class="flex justify-between gap-4">
+                    <span>Tax (0%):</span>
+                    <span id="tax-display">0.00</span>
+                  </div>
+                  <div class="flex justify-between gap-4 font-semibold text-slate-50">
+                    <span>Total:</span>
+                    <span id="total-display">0.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Notes (optional)</label>
+              <textarea name="notes" rows="2"
+                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none"
+                placeholder="Payment terms, warranty details, special comments etc."></textarea>
+            </div>
+
+            <div id="billing-status" class="text-[11px] text-slate-300 h-4"></div>
+
+            <div class="flex flex-wrap gap-3 items-center">
+              <button type="submit"
+                class="inline-flex items-center gap-2 rounded-lg bg-kingsRed px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition">
+                Generate PDF
+              </button>
+              <p class="text-[11px] text-slate-400">
+                After download, you can email or send via WhatsApp to your client.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+
+</html>
+
