@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KING'S FITNESS | Gym Service Provider & AMC</title>
+  <meta name="description"
+    content="KING'S FITNESS - Professional gym service provider in India offering AMC, equipment repairs, gym setup, manpower supply, trainers, receptionists, and managers." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kingsRed: '#b91c1c'
+          }
+        }
+      }
+    };
+  </script>
+
+  <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen bg-slate-950 text-slate-50">
+  <header class="sticky top-0 z-30 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-kingsRed flex items-center justify-center shadow-lg shadow-red-900/40">
+          <span class="font-extrabold text-white text-xl">K</span>
+        </div>
+        <div>
+          <div class="font-extrabold tracking-wide text-white text-lg">
+            KING'S FITNESS
+          </div>
+          <p class="text-[11px] uppercase tracking-[0.25em] text-red-300">
+            Gym Service Provider
+          </p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#home" class="nav-link text-slate-300 hover:text-white">Home</a>
+        <a href="#services" class="nav-link text-slate-300 hover:text-white">Services</a>
+        <a href="#amc" class="nav-link text-slate-300 hover:text-white">AMC & Repairs</a>
+        <a href="#manpower" class="nav-link text-slate-300 hover:text-white">Manpower</a>
+        <a href="#media" class="nav-link text-slate-300 hover:text-white">Projects</a>
+        <a href="#contact" class="nav-link text-slate-300 hover:text-white">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="https://wa.me/918850081223?text=Hi%20KING%27S%20FITNESS%2C%20I%27m%20interested%20in%20your%20gym%20services."
+          target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-200 hover:bg-emerald-500/20 transition">
+          <span>WhatsApp (Primary)</span>
+        </a>
+        <a href="tel:+918850081223"
+          class="inline-flex items-center gap-2 rounded-lg bg-kingsRed px-3 py-1.5 text-xs font-semibold text-white shadow-lg shadow-red-900/40 hover:bg-red-700 transition">
+          <span>Call Now</span>
+        </a>
+      </div>
+
+      <button id="mobile-menu-toggle"
+        class="md:hidden inline-flex items-center justify-center rounded-md border border-slate-700 p-2 text-slate-100 hover:bg-slate-800">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 bg-slate-950/95">
+      <nav class="px-4 pb-4 pt-2 space-y-2 text-sm font-medium">
+        <a href="#home" class="block text-slate-300 hover:text-white">Home</a>
+        <a href="#services" class="block text-slate-300 hover:text-white">Services</a>
+        <a href="#amc" class="block text-slate-300 hover:text-white">AMC & Repairs</a>
+        <a href="#manpower" class="block text-slate-300 hover:text-white">Manpower</a>
+        <a href="#media" class="block text-slate-300 hover:text-white">Projects</a>
+        <a href="#contact" class="block text-slate-300 hover:text-white">Contact</a>
+        <a href="admin.html" class="block text-kingsRed font-semibold">Admin Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4">
+    <section id="home"
+      class="relative grid md:grid-cols-[1.15fr,0.95fr] gap-10 items-center py-16 md:py-20 border-b border-slate-800 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 overflow-hidden">
+      <div class="relative z-10">
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-red-500/60 bg-red-500/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-red-100 mb-4">
+          <span>Premium Gym Service Provider</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-none">
+          KING'S <span class="text-kingsRed">FITNESS</span>
+        </h1>
+        <p class="text-[13px] md:text-sm font-semibold text-amber-200 mb-4 uppercase tracking-[0.18em]">
+          "Dream Builds. Elite Setups. Unstoppable Performance."
+        </p>
+        <p class="text-sm md:text-base text-slate-200 max-w-xl mb-6">
+          From AMC contracts to complete gym setups – KING'S FITNESS provides everything your facility needs,
+          including trained manpower, equipment repair and dream gym builds with full staff support.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-6">
+          <a href="#contact"
+            class="inline-flex items-center gap-2 rounded-md bg-kingsRed px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-900/40 hover:bg-red-700 transition">
+            <span>Get Free Quote</span>
+          </a>
+          <a href="#services"
+            class="inline-flex items-center gap-2 rounded-md border border-slate-300/40 bg-slate-900/50 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-800 transition">
+            <span>Our Services</span>
+          </a>
+        </div>
+
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-4 text-[11px] text-slate-300">
+          <div>
+            <dt class="font-semibold text-slate-100 uppercase tracking-[0.16em]">Primary Contact</dt>
+            <dd class="mt-1">
+              <a href="tel:+918850081223" class="hover:text-white">+91-8850081223</a><br />
+              <a href="tel:+919321859324" class="hover:text-white">+91-9321859324</a>
+            </dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-100 uppercase tracking-[0.16em]">Email</dt>
+            <dd class="mt-1">
+              <a href="mailto:rajsakpal4@gmail.com" class="hover:text-white">rajsakpal4@gmail.com</a><br />
+              <a href="mailto:harshsakpal1227@gmail.com" class="hover:text-white">harshsakpal1227@gmail.com</a>
+            </dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-100 uppercase tracking-[0.16em]">Services</dt>
+            <dd class="mt-1">AMC • Repairs • Gym Setups • Manpower</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-100 uppercase tracking-[0.16em]">Location</dt>
+            <dd class="mt-1">Mira Road (E), Thane and surrounding areas</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="relative h-full">
+        <div id="hero-3d"
+          class="pointer-events-none absolute inset-y-[-40px] inset-x-[-40px] md:inset-y-[-60px] md:right-[-80px] md:left-auto opacity-70"></div>
+        <div
+          class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-kingsRed/70 via-red-500/20 to-amber-400/30 blur-3xl opacity-70">
+        </div>
+        <div class="relative rounded-3xl border border-red-500/30 bg-slate-900/80/90 p-5 shadow-2xl backdrop-blur">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-xs font-semibold text-red-300 uppercase tracking-[0.2em]">
+              Gym Service Snapshot
+            </p>
+            <span class="text-[10px] text-slate-400">Real operations focus</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-4 text-xs">
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="text-[11px] text-slate-400 mb-1">Clients Served</p>
+              <p class="text-xl font-extrabold text-white">150+</p>
+              <p class="text-[10px] text-slate-300 mt-1">Commercial, society & corporate gyms</p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="text-[11px] text-slate-400 mb-1">Years Experience</p>
+              <p class="text-xl font-extrabold text-white">8+</p>
+              <p class="text-[10px] text-slate-300 mt-1">Specialised in gym maintenance</p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="text-[11px] text-slate-400 mb-1">Equipment Maintained</p>
+              <p class="text-xl font-extrabold text-white">500+</p>
+              <p class="text-[10px] text-slate-300 mt-1">Cardio & strength machines</p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="text-[11px] text-slate-400 mb-1">Client Satisfaction</p>
+              <p class="text-xl font-extrabold text-white">98%</p>
+              <p class="text-[10px] text-slate-300 mt-1">Based on repeat AMC clients</p>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-red-500/40 bg-gradient-to-r from-red-900/70 to-slate-900/80 p-3">
+            <p class="text-[11px] text-red-200 font-semibold mb-1">
+              Motto
+            </p>
+            <p class="text-[11px] text-slate-100">
+              Providing best equipments, gym products, gym setups and dream builds
+              including gym staff, trainers, receptionists, managers and full manpower
+              supply.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="py-6 border-b border-slate-800 bg-slate-950/80 scroll-reveal">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-xs text-slate-200">
+        <div class="scroll-reveal">
+          <p class="text-2xl font-extrabold text-white stat-value" data-stat-target="150" data-stat-suffix="+">0</p>
+          <p class="uppercase tracking-[0.2em] text-[10px] text-slate-400 mt-1">Clients Served</p>
+        </div>
+        <div class="scroll-reveal">
+          <p class="text-2xl font-extrabold text-white stat-value" data-stat-target="8" data-stat-suffix="+">0</p>
+          <p class="uppercase tracking-[0.2em] text-[10px] text-slate-400 mt-1">Years Experience</p>
+        </div>
+        <div class="scroll-reveal">
+          <p class="text-2xl font-extrabold text-white stat-value" data-stat-target="500" data-stat-suffix="+">0</p>
+          <p class="uppercase tracking-[0.2em] text-[10px] text-slate-400 mt-1">Equipment Maintained</p>
+        </div>
+        <div class="scroll-reveal">
+          <p class="text-2xl font-extrabold text-white stat-value" data-stat-target="98" data-stat-suffix="%">0</p>
+          <p class="uppercase tracking-[0.2em] text-[10px] text-slate-400 mt-1">Client Satisfaction</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-12 border-b border-slate-800 scroll-reveal">
+      <div class="flex items-end justify-between gap-4 mb-8 scroll-reveal from-left">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Services we provide</h2>
+          <p class="text-sm text-slate-300 max-w-2xl">
+            From single machine repairs to full commercial gym builds – we manage your equipment,
+            service schedules, upgrades and team so you can focus on growing your fitness community.
+          </p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="service-card scroll-reveal">
+          <div class="service-pill">AMC Contracts</div>
+          <h3 class="service-title">Annual Maintenance Contracts</h3>
+          <p class="service-text">
+            Preventive and breakdown maintenance for all cardio and strength machines including treadmills,
+            cross trainers, bikes, multi-gyms and more. Scheduled visits, deep cleaning, calibration and safety
+            checks.
+          </p>
+          <ul class="service-list">
+            <li>Custom AMC plans for commercial & society gyms</li>
+            <li>Spare part guidance and replacements</li>
+            <li>Detailed maintenance reports</li>
+          </ul>
+        </div>
+
+        <div class="service-card scroll-reveal">
+          <div class="service-pill">Repairs & Upgrades</div>
+          <h3 class="service-title">Gym Equipment Repairs</h3>
+          <p class="service-text">
+            Fast, on-site breakdown support for all leading brands and also economical machines.
+            Electrical, mechanical and console issues handled by experienced technicians.
+          </p>
+          <ul class="service-list">
+            <li>Belt, motor, deck, bearing and cable fixes</li>
+            <li>Console and sensor troubleshooting</li>
+            <li>Upgrade recommendations for old setups</li>
+          </ul>
+        </div>
+
+        <div class="service-card scroll-reveal">
+          <div class="service-pill">Complete Setups</div>
+          <h3 class="service-title">New Gym & Renovation</h3>
+          <p class="service-text">
+            Concept to handover gym builds – layout, equipment selection, flooring, mirrors, branding and
+            ambience to match your budget and target members.
+          </p>
+          <ul class="service-list">
+            <li>Site visit and layout planning</li>
+            <li>Multiple brand and budget options</li>
+            <li>Installation, testing & handover training</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="amc" class="py-12 border-b border-slate-800 scroll-reveal">
+      <div class="grid md:grid-cols-[1.2fr,0.8fr] gap-10 items-start">
+        <div class="scroll-reveal from-left">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
+            Smart AMC & breakdown support
+          </h2>
+          <p class="text-sm text-slate-300 mb-4 max-w-xl">
+            Downtime kills member experience. Our AMC plans are designed to keep your gym machines running
+            smoothly with predictable costs and proactive care.
+          </p>
+          <div class="space-y-4 text-sm text-slate-200">
+            <div class="flex gap-3">
+              <div class="mt-1 h-5 w-5 rounded-full bg-kingsRed/30 border border-kingsRed/60 flex items-center justify-center text-[10px] text-red-100">
+                1
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-100">Regular preventive visits</h3>
+                <p class="text-slate-300">
+                  Monthly / quarterly visits with full checklist – cleaning, greasing, belt alignment,
+                  nut-bolt tightening, calibration and safety review.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="mt-1 h-5 w-5 rounded-full bg-kingsRed/30 border border-kingsRed/60 flex items-center justify-center text-[10px] text-red-100">
+                2
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-100">Priority breakdown calls</h3>
+                <p class="text-slate-300">
+                  Faster response and visit slots for AMC clients to get critical machines like treadmills back
+                  online quickly.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="mt-1 h-5 w-5 rounded-full bg-kingsRed/30 border border-kingsRed/60 flex items-center justify-center text-[10px] text-red-100">
+                3
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-100">Transparent reports & quotation system</h3>
+                <p class="text-slate-300">
+                  Every visit is logged and you receive a clear quotation or bill for any extra parts or work –
+                  all generated from our digital system.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-5 space-y-4 text-sm scroll-reveal from-right">
+          <div>
+            <h3 class="text-sm font-semibold text-slate-100 mb-1">Need a quotation or AMC proposal?</h3>
+            <p class="text-slate-300">
+              Share your current gym details and we will send a proper PDF quotation or proposal.
+            </p>
+          </div>
+          <ul class="text-slate-300 text-xs space-y-1">
+            <li>• Number of treadmills, cross trainers, bikes, strength machines</li>
+            <li>• Brand & age of equipment</li>
+            <li>• Location and type of gym (society / commercial / corporate)</li>
+          </ul>
+          <a href="#contact"
+            class="inline-flex items-center gap-2 rounded-lg bg-kingsRed px-3 py-2 text-xs font-semibold text-white mt-2 hover:bg-red-700 transition">
+            <span>Request AMC Quotation</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="manpower" class="py-12 border-b border-slate-800 scroll-reveal">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div class="scroll-reveal from-left">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
+            Manpower & staffing for your gym
+          </h2>
+          <p class="text-sm text-slate-300 mb-4">
+            Along with machines, we also help you build the right team so your gym runs smoothly day to day.
+          </p>
+          <div class="space-y-3 text-sm text-slate-200">
+            <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3">
+              <h3 class="font-semibold text-slate-100">Certified Trainers</h3>
+              <p class="text-slate-300 text-xs mt-1">
+                Strength & conditioning, functional training, weight loss, special population and more –
+                matched to your members' goals.
+              </p>
+            </div>
+            <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3">
+              <h3 class="font-semibold text-slate-100">Reception & Front Desk</h3>
+              <p class="text-slate-300 text-xs mt-1">
+                Member check-in, queries, follow-ups and trial conversions handled professionally.
+              </p>
+            </div>
+            <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3">
+              <h3 class="font-semibold text-slate-100">Gym Managers</h3>
+              <p class="text-slate-300 text-xs mt-1">
+                Day-to-day operations, trainer coordination, sales targets and member experience managed end to end.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-red-500/40 bg-gradient-to-br from-red-950 via-slate-950 to-slate-900 p-5 scroll-reveal from-right">
+          <h3 class="text-sm font-semibold text-red-200 mb-2">
+            Why gyms choose KING'S FITNESS
+          </h3>
+          <ul class="text-xs text-slate-200 space-y-2">
+            <li>• One partner for equipment, AMC, repairs and manpower</li>
+            <li>• Guidance on gym apps, tracking and member engagement tools</li>
+            <li>• Honest advice on when to repair and when to replace</li>
+            <li>• Support for new setups, revamps and expansions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="media" class="py-12 border-b border-slate-800 scroll-reveal">
+      <div class="flex items-end justify-between gap-4 mb-6">
+        <div class="scroll-reveal from-left">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Setups, projects & videos</h2>
+          <p class="text-sm text-slate-300 max-w-2xl">
+            Latest work, gym tours, equipment demos and maintenance tips uploaded by the KING'S FITNESS team.
+          </p>
+        </div>
+      </div>
+
+      <div id="media-grid" class="grid md:grid-cols-3 gap-5 text-sm">
+        <div
+          class="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 flex flex-col items-center justify-center text-center text-slate-400">
+          <p class="mb-2 text-slate-200 font-semibold">Content coming soon</p>
+          <p class="text-xs">
+            KING'S FITNESS team will upload gym setup videos and images from the admin dashboard.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="py-10 bg-kingsRed mt-4 rounded-3xl md:rounded-[2rem] mb-6 scroll-reveal">
+      <div class="max-w-4xl mx-auto text-center px-4">
+        <p class="text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] text-red-100 mb-2">
+          Ready to build your dream gym?
+        </p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3">
+          Contact us today for a customised quotation for your facility.
+        </h2>
+        <p class="text-xs md:text-sm text-red-100 mb-5">
+          Share your gym size, equipment list and location – KING'S FITNESS will suggest the right setup, AMC plan and
+          manpower support.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="tel:+918850081223"
+            class="inline-flex items-center gap-2 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 transition">
+            Call Us Now
+          </a>
+          <a href="https://wa.me/918850081223?text=Hi%20KING%27S%20FITNESS%2C%20I%20want%20a%20quotation%20for%20my%20gym."
+            target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 rounded-md border border-white/60 bg-transparent px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition">
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-12 scroll-reveal">
+      <div class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
+            Contact KING'S FITNESS
+          </h2>
+          <p class="text-sm text-slate-300 mb-4">
+            Tell us about your gym or upcoming project and we will share a clear quotation or proposal.
+          </p>
+
+          <form id="contact-form" class="space-y-4 text-sm">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Full name *</label>
+                <input name="name" required
+                  class="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Phone number *</label>
+                <input name="phone" required
+                  class="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none" />
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Email</label>
+                <input name="email"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Service type</label>
+                <select name="serviceType"
+                  class="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 focus:border-kingsRed focus:outline-none">
+                  <option value="">Select service</option>
+                  <option value="amc">AMC Contract</option>
+                  <option value="repairs">Repairs / Breakdown</option>
+                  <option value="setup">New Gym Setup</option>
+                  <option value="manpower">Manpower / Staff</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Details *</label>
+              <textarea name="message" required rows="4"
+                class="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 placeholder-slate-500 focus:border-kingsRed focus:outline-none"
+                placeholder="Share gym size, location, equipment list or requirement in short."></textarea>
+            </div>
+            <div id="contact-status" class="text-xs text-slate-300 h-4"></div>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button type="submit"
+                class="inline-flex items-center gap-2 rounded-lg bg-kingsRed px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition">
+                <span>Submit enquiry</span>
+              </button>
+              <a href="mailto:rajsakpal4@gmail.com"
+                class="inline-flex items-center gap-1 text-xs text-slate-300 hover:text-white">
+                Or email directly: <span class="font-semibold">rajsakpal4@gmail.com</span>
+              </a>
+            </div>
+          </form>
+        </div>
+
+        <div class="space-y-4 text-sm">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+            <h3 class="text-sm font-semibold text-slate-100 mb-2">Instant connect</h3>
+            <ul class="space-y-1 text-xs text-slate-300">
+              <li>
+                Call (Primary): <a href="tel:+918850081223" class="text-slate-50 hover:text-white font-semibold">+91-8850081223</a>
+              </li>
+              <li>
+                Call (Owner): <a href="tel:+919321859324" class="text-slate-50 hover:text-white font-semibold">+91-9321859324</a>
+              </li>
+              <li>
+                WhatsApp (Primary): <a
+                  href="https://wa.me/918850081223?text=Hi%20KING%27S%20FITNESS%2C%20I%20want%20to%20discuss%20gym%20services."
+                  target="_blank" rel="noopener" class="text-emerald-300 hover:text-emerald-100">Click to chat</a>
+              </li>
+              <li>
+                WhatsApp (Owner): <a
+                  href="https://wa.me/919321859324?text=Hi%20KING%27S%20FITNESS%2C%20I%20want%20to%20discuss%20gym%20setup%20and%20AMC."
+                  target="_blank" rel="noopener" class="text-emerald-300 hover:text-emerald-100">Click to chat</a>
+              </li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-red-500/40 bg-red-950/40 p-4 text-xs text-red-100">
+            <p class="font-semibold mb-1">Quotation & billing system</p>
+            <p>
+              Once we understand your requirement, we create professional bills and quotations directly from our
+              system and share them with you as PDF.
+            </p>
+            <p class="mt-2">
+              Existing KING'S FITNESS clients get priority and all documents are generated digitally for easy record
+              keeping.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 text-xs text-slate-300">
+            <p>
+              For admin access to upload new photos, videos and create bills/quotations, use the
+              <a href="admin.html" class="text-kingsRed font-semibold hover:text-red-300">Admin Dashboard</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 py-4 mt-4">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
+      <p>© <span id="year"></span> KING'S FITNESS. All rights reserved.</p>
+      <p>Gym service provider • AMC • Repairs • Gym setups • Manpower & staff supply.</p>
+    </div>
+  </footer>
+
+  <div class="fixed left-4 bottom-24 md:bottom-28 flex flex-col gap-3 z-40">
+    <a href="https://wa.me/918850081223?text=Hi%20KING%27S%20FITNESS%2C%20I%20want%20to%20discuss%20gym%20services."
+      target="_blank" rel="noopener"
+      class="flex items-center justify-center h-11 w-11 rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-900/50 hover:bg-emerald-400">
+      W
+    </a>
+    <a href="tel:+918850081223"
+      class="flex items-center justify-center h-11 w-11 rounded-full bg-red-600 text-white shadow-lg shadow-red-900/50 hover:bg-red-500">
+      ☎
+    </a>
+  </div>
+
+  <div id="chatbot-root"></div>
+
+  <script src="js/chatbot.js"></script>
+  <script src="js/hero3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
+
