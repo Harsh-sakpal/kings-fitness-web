@@ -1,0 +1,29 @@
+{
+  "name": "kings-fitness-web",
+  "version": "1.0.0",
+  "description": "KING'S FITNESS - Gym service provider website with admin dashboard, billing, and automation.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "gym",
+    "fitness",
+    "amc",
+    "maintenance",
+    "invoice",
+    "quotation",
+    "node",
+    "express"
+  ],
+  "author": "KING'S FITNESS",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.13",
+    "pdfkit": "^0.15.0"
+  }
+}
