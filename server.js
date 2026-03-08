@@ -375,7 +375,3 @@ app.listen(PORT, () => {
   console.log(`KING'S FITNESS server running on http://localhost:${PORT}`);
 });
 
-app.listen(PORT, () => {
-  console.log(`KING'S FITNESS server running on http://localhost:${PORT}`);
-});
-
